@@ -9,8 +9,6 @@ const MIN_APPLES_FOR_CARD = 3
 const MAX_APPLES_FOR_CARD = 6
 
 // Existing constants
-const GRID_SIZE = 14
-const GRID_HALF = GRID_SIZE / 2
 const PLAY_BOUNDARY = 8
 const INITIAL_SNAKE = [new Vector3(0, 0, 0)]
 const INITIAL_DIRECTION = new Vector3(1, 0, 0)
@@ -72,19 +70,23 @@ const useGame = (isActive: boolean, onScoreUpdate: (score: number) => void) => {
 
   const handleCardEffect = useCallback((card: Card) => {
     switch (card.action.type) {
-      case 'GROW':
+      case 'GROW': {
+        const { amount } = card.action;
         setSnakePositions(prev => {
           const lastPos = prev[prev.length - 1]
-          return [...prev, ...Array(card.action.amount).fill(lastPos)]
+          return [...prev, ...Array(amount).fill(lastPos)]
         })
         break
-      case 'SHRINK':
+    }
+      case 'SHRINK': {
+        const { amount } = card.action;
         setSnakePositions(prev => 
-          prev.length > card.action.amount ? 
-          prev.slice(0, -card.action.amount) : 
+          prev.length > amount ? 
+          prev.slice(0, -amount) : 
           prev.slice(0, 1)
         )
         break
+    }
       case 'TELEPORT':
         setSnakePositions(prev => {
           const newHead = new Vector3(
@@ -95,13 +97,17 @@ const useGame = (isActive: boolean, onScoreUpdate: (score: number) => void) => {
           return [newHead, ...prev.slice(1)]
         })
         break
-      case 'POINTS':
-        setScore(prev => prev + card.action.amount)
-        onScoreUpdate(score + card.action.amount)
+      case 'POINTS': {
+        const { amount } = card.action;
+        setScore(prev => prev + amount)
+        onScoreUpdate(score + amount)
         break
-      case 'SPEED_BOOST':
-        speedRef.current *= card.action.amount
+      }
+      case 'SPEED_BOOST': {
+        const { amount } = card.action;
+        speedRef.current *= amount
         break
+      }
       case 'EXTRA_APPLE':
         setExtraFoodPosition(generateFood())
         break

@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Vector3 } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { Sphere } from '@react-three/drei'
+import * as THREE from 'three';
 
 interface FoodProps {
   position: Vector3;

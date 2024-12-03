@@ -3,19 +3,16 @@ import { Snake } from './Snake'
 import { Food } from './Food'
 import { Grid } from './Grid'
 import { Ant } from './Ant'
-import { Garden } from './Garden'
 import useGame from '../hooks/useGame'
-import { Environment } from '@react-three/drei'
 
 interface GameProps {
   gameState: 'start' | 'playing' | 'paused' | 'gameover';
   setGameState: (state: 'start' | 'playing' | 'paused' | 'gameover') => void;
-  score: number;
   setScore: (score: number) => void;
   setCurrentCard: (card: any) => void;
 }
 
-const Game = ({ gameState, setGameState, score, setScore, setCurrentCard }: GameProps) => {
+const Game = ({ gameState, setGameState, setScore, setCurrentCard }: GameProps) => {
   const { 
     snakePositions, 
     foodPosition,
@@ -50,8 +47,6 @@ const Game = ({ gameState, setGameState, score, setScore, setCurrentCard }: Game
 
   return (
     <>
-      <Environment preset="sunset" />
-      {/* <Garden /> */}
       <Grid />
       <Snake positions={snakePositions} direction={direction} />
       <Food position={foodPosition} isSpecial={nextFoodIsSpecial} />

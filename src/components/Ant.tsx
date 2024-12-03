@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Vector3 } from 'three'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -55,7 +55,7 @@ export const Ant = ({ onCollisionWithSnake, snakePositions, playBoundary }: AntP
     return validDirections[Math.floor(Math.random() * validDirections.length)]
   }
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     moveTimer.current += delta * 1000
 
     if (moveTimer.current >= MOVE_INTERVAL) {

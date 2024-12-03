@@ -50,7 +50,7 @@ interface GameUIProps {
   onRestart: () => void;
 }
 
-export const GameUI = ({ gameState, score, onStart, onResume, onRestart }: GameUIProps) => {
+const GameUI = ({ gameState, score, onStart, onResume, onRestart }: GameUIProps) => {
   if (gameState === 'playing') return null;
 
   return (
@@ -82,3 +82,5 @@ export const GameUI = ({ gameState, score, onStart, onResume, onRestart }: GameU
     </Overlay>
   )
 }
+
+export default GameUI;

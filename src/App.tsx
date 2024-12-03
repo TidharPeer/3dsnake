@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Game from './components/Game'
-import { GameUI } from './components/GameUI'
+import GameUI from './components/GameUI'
 import { CardDisplay } from './components/CardDisplay'
 import styled from 'styled-components'
 import { useState } from 'react'
@@ -61,7 +61,6 @@ function App() {
         <Game 
           gameState={gameState}
           setGameState={setGameState}
-          score={score}
           setScore={setScore}
           setCurrentCard={setCurrentCard}
         />

@@ -1,6 +1,5 @@
 import { Vector3 } from 'three'
-import { useRef } from 'react'
-import { Sphere, Box } from '@react-three/drei'
+import { Sphere } from '@react-three/drei'
 
 interface SnakeProps {
   positions: Vector3[]
@@ -9,7 +8,7 @@ interface SnakeProps {
 
 export const Snake = ({ positions, direction }: SnakeProps) => {
   // Updated rotation angles to face the correct direction
-  const getHeadRotation = () => {
+  const getHeadRotation = (): [number, number, number] => {
     if (direction.x === 1) return [0, Math.PI / 2, 0]    // Right
     if (direction.x === -1) return [0, -Math.PI / 2, 0]  // Left
     if (direction.z === 1) return [0, 0, 0]              // Down

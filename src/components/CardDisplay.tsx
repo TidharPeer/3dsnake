@@ -1,5 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
-import { useEffect, useState } from 'react'
+import styled, { keyframes } from 'styled-components'
 import { Card } from '../types/CardTypes'
 
 const scorePopup = keyframes`
